@@ -13,7 +13,7 @@ class TipoAtividade(models.Model):
 
 
 class Atividade(models.Model):
-    tipoAtividade = models.ForeignKey('TipoAtividade',on_delete=models.CASCADE,)
+    autor = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     nome = models.CharField(max_length=30)
     descricao = models.TextField()
     data_criacao = models.DateTimeField(default=timezone.now)
@@ -28,6 +28,7 @@ class Atividade(models.Model):
 
 
 class Realizacao(models.Model):
+    autor = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     atividade = models.ForeignKey('Atividade', on_delete=models.PROTECT)
     # sensacao = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     nome = models.CharField(max_length=30)
@@ -57,7 +58,8 @@ class Humor(models.Model):
 
 
 class Sensacao(models.Model):
-    humor = models.ForeignKey('Humor', on_delete=models.PROTECT)
+    autor = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    humor = models.CharField(max_length=30)
     descricao = models.TextField()
     data_criacao = models.DateTimeField(default=timezone.now)
     # data_ultima_utilizacao = models.DateTimeField(blank=True, null=True) #

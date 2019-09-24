@@ -1,0 +1,10 @@
+Ativar o ENV em: myvenv\Scripts\activate
+
+Ativar o DJANGO: F python manage.py makemigrations
+
+Fazer a migração dos models: python manage.py makemigrations jsadayapp
+
+Subir servidor: python manage.py runserver
+
+Criar superusuario: python manage.py createsuperuser
+
