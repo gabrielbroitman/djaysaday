@@ -8,3 +8,7 @@ Subir servidor: python manage.py runserver
 
 Criar superusuario: python manage.py createsuperuser
 
+PYTHONANYWHERE
+ workon <your-pythonanywhere-domain>.pythonanywhere.com
+(ola.pythonanywhere.com)$ python manage.py collectstatic
+

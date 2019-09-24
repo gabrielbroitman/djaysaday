@@ -1,0 +1,13 @@
+{% extends 'base/base.html' %}
+
+{% block content %}
+    <div class="atividade">
+        {% if atividade.data_criacao %}
+            <div class="date">
+                {{ atividade.data_criacao }}
+            </div>
+        {% endif %}
+        <h2>{{ atividade.nome }}</h2>
+        <p>{{ atividade.descricao|linebreaksbr }}</p>
+    </div>
+{% endblock %}
