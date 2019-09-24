@@ -11,7 +11,9 @@
 
 <body>
     <div class="page-header">
-            <a href="{% url 'nova_atividade' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
+        {% if user.is_authenticated %}
+        <a href="{% url 'nova_atividade' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
+        {% endif %}
         <h1><a href="/">J's A Day</a></h1>
     </div>
     <div class="content container">
