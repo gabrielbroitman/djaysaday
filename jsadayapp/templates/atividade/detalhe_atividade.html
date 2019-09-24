@@ -7,6 +7,7 @@
                 {{ atividade.data_criacao }}
             </div>
         {% endif %}
+        <a class="btn btn-default" href="{% url 'edicao_atividade' pk=atividade.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
         <h2>{{ atividade.nome }}</h2>
         <p>{{ atividade.descricao|linebreaksbr }}</p>
     </div>

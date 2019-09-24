@@ -24,3 +24,18 @@ def nova_atividade(request):
      else:
          form = AtividadeForm()
      return render(request, 'atividade/edicao_atividade.html', {'form': form})
+
+
+def edicao_atividade(request, pk):
+     atividade = get_object_or_404(Atividade, pk=pk)
+     if request.method == "POST":
+         form = AtividadeForm(request.POST, instance=atividade)
+         if form.is_valid():
+             atividade = form.save(commit=False)
+             atividade.autor = request.user
+             atividade.data_criacao = timezone.now()
+             atividade.save()
+             return redirect('detalhe_atividade', pk=atividade.pk)
+     else:
+         form = AtividadeForm(instance=atividade)
+     return render(request, 'atividade/edicao_atividade.html', {'form': form})
