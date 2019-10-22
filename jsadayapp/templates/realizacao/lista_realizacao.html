@@ -1,0 +1,15 @@
+{% extends 'base/base.html' %}
+
+{% block content %}
+
+{% for realizacao in realizacoes %}
+<div class="realizacao">
+    <h2><a href="{% url 'detalhe_realizacao' pk=realizacao.pk %}">{{ realizacao.atividade.nome }}</a></h2>
+    <p>{{ realizacao.descricao|linebreaksbr }}</p>
+    <div class="date">
+        <p>Realizada em: {{ realizacao.data_realizacao }}</p>
+    </div>
+</div>
+{% endfor %}
+
+{% endblock %}

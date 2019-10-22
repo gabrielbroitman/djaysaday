@@ -49,7 +49,7 @@ class Humor(models.Model):
     nome = models.CharField(max_length=30)
     nivel = models.CharField(max_length=1, default=None) #1 pra pior - 5 pra melhor
     data_criacao = models.DateTimeField(default=timezone.now)
-    sensacoes = models.ManyToManyField('Sensacao', default=None)
+    sensacoes = models.ManyToManyField('Sensacao', default=None, null=True)
     realizacoes = models.ManyToManyField('Realizacao', default=None)
     # data_ultima_utilizacao = models.DateTimeField(blank=True, null=True) #
 
