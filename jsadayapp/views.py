@@ -39,3 +39,5 @@ def edicao_atividade(request, pk):
      else:
          form = AtividadeForm(instance=atividade)
      return render(request, 'atividade/edicao_atividade.html', {'form': form})
+ 
+ 
