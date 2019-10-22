@@ -1,0 +1,37 @@
+{% extends 'base/base.html' %}
+
+{% block content %}
+Atividades
+{% for atividade in atividades %}
+<div class="atividade">
+    <h2><a href="{% url 'detalhe_atividade' pk=atividade.pk %}">{{ atividade.nome }}</a></h2>
+    <p>{{ atividade.descricao|linebreaksbr }}</p>
+    <div class="date">
+        <p>Criada em: {{ atividade.data_criacao }}</p>
+    </div>
+</div>
+{% endfor %}
+<br>Realizacoes
+{% for realizacao in realizacoes %}
+<div class="realizacao">
+    <h2><a href="{% url 'detalhe_realizacao' pk=realizacao.pk %}">{{ realizacao.data_realizacao }}</a></h2>
+    <p>{{ realizacao.descricao|linebreaksbr }}</p>
+    <div class="date">
+        <p>Criada em: {{ realizacao.data_realizacao }}</p>
+    </div>
+</div>
+{% endfor %}
+<br>Humores definidos
+{% for humor in humores %}
+<div class="humor">
+    <h2><a href="{% url 'detalhe_humor' pk=humor.pk %}">{{ humor.data_criacao }}</a></h2>
+    <p>{{ humor.nivel }}</p>
+    <div class="date">
+        <p>Criada em: {{ humor.data_criacao }}</p>
+    </div>
+</div>
+{% endfor %}
+
+
+
+{% endblock %}
