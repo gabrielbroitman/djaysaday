@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.utils import timezone
-from ..models import Atividade, Humor, Realizacao
-from ..forms import AtividadeForm, HumorForm, RealizacaoForm
+from ..models import Realizacao
+from ..forms import RealizacaoForm
 
 # Views REALIZACAO
 def lista_realizacao(request):

@@ -2,6 +2,22 @@ from django.db import models
 from django.conf import settings
 from django.utils import timezone
 
+NIVEL = [
+    (-2, 'Muito negativo'),
+    (-1, 'Negativo'),
+    (0, 'Neutro'),
+    (1, 'Positivo'),
+    (2, 'Muito positivo'),
+]
+
+TIPO_ATIVIDADE = [
+    ('F', 'Física'),
+    ('S', 'Substância'),
+    ('A', 'Alimentação'),
+    ('O', 'Outro'),
+    (2, 'Muito positivo'),
+]
+
 class TipoAtividade(models.Model):
     nome = models.CharField(max_length=12)
     codigo = models.CharField(max_length=1)
@@ -43,14 +59,16 @@ class Realizacao(models.Model):
         self.save()
 
     def __str__(self):
-        return self.atividade.nome
+        return self.descricao
 
 class Humor(models.Model):
+    autor = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     nome = models.CharField(max_length=30)
-    nivel = models.CharField(max_length=1, default=None) #1 pra pior - 5 pra melhor
+    nivel = models.CharField(max_length=1, choices=NIVEL, default=0,) #-2 pra pior +2 pra melhor
     data_criacao = models.DateTimeField(default=timezone.now)
-    sensacoes = models.ManyToManyField('Sensacao', default=None, null=True)
+    sensacoes = models.ManyToManyField('Sensacao', default=None)
     realizacoes = models.ManyToManyField('Realizacao', default=None)
+    descricao = models.TextField(blank=True, default='')
     # data_ultima_utilizacao = models.DateTimeField(blank=True, null=True) #
 
     def cadastrar(self):
@@ -65,7 +83,8 @@ class Humor(models.Model):
 class Sensacao(models.Model):
     autor = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     nome = models.CharField(max_length=30)
-    descricao = models.TextField()
+    nivel = models.CharField(max_length=1, choices=NIVEL, default=0,) #-2 pra pior +2 pra melhor
+    descricao = models.TextField(null=True, default='')
     data_criacao = models.DateTimeField(default=timezone.now)
     # data_ultima_utilizacao = models.DateTimeField(blank=True, null=True) #
 

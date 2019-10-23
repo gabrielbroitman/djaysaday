@@ -1,6 +1,6 @@
-from .realizacao import *
-from .atividade import *
-from .humor import *
+from django.shortcuts import render
+from django.utils import timezone
+from ..models import Atividade, Realizacao, Humor
 
 #View HOME
 def home(request):
