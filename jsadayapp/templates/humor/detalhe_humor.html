@@ -12,6 +12,10 @@
             class="glyphicon glyphicon-pencil"></span></a>
     {% endif %}
     <h2>{{ humor.nome }}</h2>
+    <h2>{{ humor.nivel }}</h2>
+    {% for sensacao in humor.sensacoes.all %}
+    <h2>{{ sensacao.nome }}</h2>
+    {% endfor %}
     <p>{{ humor.descricao|linebreaksbr }}</p>
 </div>
 {% endblock %}

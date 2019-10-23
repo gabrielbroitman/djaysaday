@@ -9,8 +9,22 @@ class AtividadeForm(forms.ModelForm):
     class Meta:
         model = Atividade
         fields = ('nome', 'descricao', 'tipoAtividade')
+
+class AtividadeRealizacaoForm(forms.ModelForm):
+
+    class Meta:
+        model = Atividade
+        fields = ('nome', 'descricao', 'tipoAtividade')
+
+class RealizacaoSemAtividadeForm(forms.ModelForm):
+
+    class Meta:
+        model = Realizacao
+        fields = ('descricao', 'data_realizacao')
+
+
         
-class RealizacaoForm(forms.ModelForm):
+class RealizacaoComAtividadeForm(forms.ModelForm):
 
     class Meta:
         model = Realizacao

@@ -24,7 +24,7 @@ def nova_atividade(request):
             atividade = form.save(commit=False)
             atividade.autor = request.user
             atividade.data_criacao = timezone.now()
-            atividade.save()
+            atividade.cadastrar()
             return redirect('detalhe_atividade', pk=atividade.pk)
     else:
         form = AtividadeForm()
