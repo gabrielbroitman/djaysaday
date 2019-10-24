@@ -4,6 +4,9 @@ from . import views
 urlpatterns = [
     
     path('', views.home, name='home'),
+
+    #Atividades
+    path('user/getuserlogado/<int:pk>', views.detalhe_user, name='detalhe_user'),
     
     #Atividades
     path('atividade/listar/', views.lista_atividade, name='lista_atividade'),
