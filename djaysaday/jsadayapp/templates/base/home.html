@@ -1,0 +1,62 @@
+{% extends 'base/base.html' %}
+
+{% block content %}
+<div class="container">
+    <div class="col-md-4">
+        {% if realizacoes.count %}
+        <h2>Realizações</h2>
+        {% for realizacao in realizacoes %}
+        <div class="realizacao">
+            <a href="{% url 'detalhe_realizacao' pk=realizacao.pk %}"><b>Atividade:</b> {{ realizacao.atividade.nome }}</a>
+            <p>{{ realizacao.descricao|linebreaksbr }}</p>
+            <div class="date">
+                <p>Criada em: {{ realizacao.data_realizacao }}</p>
+            </div>
+        </div>
+        {% endfor %}
+        {% else %}
+        Nenhuma realização cadastrada
+        {% endif %}
+    </div>
+
+
+    <div class="col-md-4">
+        {% if humores.count %}
+        <h2>Humores</h2>
+        {% for humor in humores %}
+        <div class="humor">
+            Nível:<a href="{% url 'detalhe_humor' pk=humor.pk %}">{{ humor.nivel }}</a><br>
+            Sensações:
+            {% for sensacao in humor.sensacoes.all %}
+                a
+            {% endfor %}
+            <div class="date">
+                <p>Criada em: {{ humor.data_criacao }}</p>
+            </div>
+        </div>
+        {% endfor %}
+        {% else %}
+        Nenhum humor cadastrado
+        {% endif %}
+    </div>
+
+    <div class="col-md-4">
+        {% if atividades.count %}
+        <h2>Atividade{{atividades.count | pluralize}}</h2>
+        {% for atividade in atividades %}
+        <div class="atividade">
+            <h2><a href="{% url 'detalhe_atividade' pk=atividade.pk %}">Nome: {{ atividade.nome }}</a>
+                <p>Tipo: {{ atividade.tipoAtividade }}</p>
+            </h2>
+            <p>Descricao: {{ atividade.descricao|linebreaksbr }}</p>
+            <div class="date">
+                <p>Criada em: {{ atividade.data_criacao }}</p>
+            </div>
+        </div>
+        {% endfor %}
+        {% else %}
+        Nenhuma atividade cadastrada
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

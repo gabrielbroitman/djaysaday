@@ -1,0 +1,17 @@
+{% extends 'base/base.html' %}
+
+{% block content %}
+<div class="atividade">
+    {% if atividade.data_criacao %}
+    <div class="date">
+        {{ atividade.data_criacao }}
+    </div>
+    {% endif %}
+    {% if user.is_authenticated %}
+    <a class="btn btn-default" href="{% url 'edicao_atividade' pk=atividade.pk %}"><span
+            class="glyphicon glyphicon-pencil"></span></a>
+    {% endif %}
+    <h2>{{ atividade.nome }}</h2>
+    <p>{{ atividade.descricao|linebreaksbr }}</p>
+</div>
+{% endblock %}
