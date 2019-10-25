@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnChanges } from '@angular/core';
 import { AuthenticationService } from '../_services/authentication.service';
 
 @Component({
@@ -8,10 +8,12 @@ import { AuthenticationService } from '../_services/authentication.service';
 })
 export class AppComponent {
 
-  constructor(public authService: AuthenticationService) { }
+  constructor(public authService: AuthenticationService) {
+
+  }
 
   search() {
-  	window.location.href = "https://www.google.co.in/search?q=Bhaskar+Rajoriya";
+    window.location.href = "https://www.google.co.in/search?q=Bhaskar+Rajoriya";
   }
 
 }

@@ -38,7 +38,7 @@ export class AuthenticationService {
                     if (this.token) {
                         // store expiresIn and jwt token in local storage to keep user logged in between page refreshes
                         localStorage.setItem('user',
-                            JSON.stringify({ expires_in: expiresIn, token: this.token }));
+                            JSON.stringify({ expires_in: expiresIn, token: this.token, username: email }));
                     }
                     return response;
                 })
@@ -55,7 +55,7 @@ export class AuthenticationService {
                     if (this.token) {
                         // store expiresIn and jwt token in local storage to keep user logged in between page refreshes
                         localStorage.setItem('user',
-                            JSON.stringify({ expires_in: expiresIn, token: this.token }));
+                            JSON.stringify({ expires_in: expiresIn, token: this.token, username: username }));
                     }
                     return response;
                 })
