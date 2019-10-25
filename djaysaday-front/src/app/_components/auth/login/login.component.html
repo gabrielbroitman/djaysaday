@@ -1,5 +1,5 @@
 <div class='container'>
-  <form #loginForm="ngForm" (ngSubmit)="buscarUsuario(1)">
+  <form #loginForm="ngForm" (ngSubmit)="onLogIn()">
     <mat-card>
       <mat-card-title>
         <mat-icon>perm_identity</mat-icon>
@@ -12,8 +12,8 @@
         <mat-form-field>
           <input matInput [(ngModel)]="password" name="password" required="required" pattern=".{6,30}" type="password" placeholder="Password" />
         </mat-form-field>
-        <a class="link" 
-          [routerLink]="['/forgot-password']" 
+        <a class="link"
+          [routerLink]="['/forgot-password']"
           routerLinkActive="link-active">
           <span>Forgot password?</span>
         </a>

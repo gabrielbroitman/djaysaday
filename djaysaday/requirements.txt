@@ -3,3 +3,5 @@ djangorestframework
 markdown
 django-filter
 django-cors-headers
+django-rest-auth 
+django-allauth

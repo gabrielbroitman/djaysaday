@@ -8,7 +8,7 @@ import { environment } from '../../environments/environment';
 export class AuthenticationService {
     public token: string;
     public headers: HttpHeaders;
-    public readonly apiUrl = environment.apiUrl;
+    public readonly apiUrl = environment.apiUrl + '/auth';
     public readonly baseUrl = environment.baseUrl;
 
     constructor(public http: HttpClient) {
@@ -29,7 +29,7 @@ export class AuthenticationService {
     }
 
     login(email: string, password: string): Observable<any> {
-        return this.http.post(this.apiUrl + '/auth/login', { username: email, password: password })
+        return this.http.post(this.apiUrl + '/login/', { username: email, password: password })
             .pipe(
                 map((response: Response) => {
                     // login successful if there's a jwt token in the response
@@ -46,7 +46,7 @@ export class AuthenticationService {
     }
 
     register(username: string, email: string, password: string): Observable<any> {
-        return this.http.post(this.apiUrl + '/auth/signup', { email: email, name: username, password: password })
+        return this.http.post(this.apiUrl + '/signup/', {  email: email, username: username, password1: password, password2: password })
             .pipe(
                 map((response: Response) => {
                     // register successful if there's a jwt token in the response

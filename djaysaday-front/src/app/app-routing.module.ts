@@ -3,6 +3,7 @@ import { RegisterComponent, LoginComponent, ForgotPasswordComponent, ResetPasswo
 import { HomeComponent } from './_components/home/home.component';
 import { AuthGuard } from './_guards/auth.guard';
 import { AllDummyComponent, CreateDummyComponent, EditDummyComponent, ShowDummyComponent } from './_components/dummy/index';
+import { CreateAtividadeComponent, EditAtividadeComponent, ShowAtividadeComponent, ListaAtividadeComponent } from './_components/atividade';
 
 const appRoutes: Routes = [
 	{ path: 'login', component: LoginComponent },
@@ -10,19 +11,19 @@ const appRoutes: Routes = [
 	{ path: 'forgot-password', component: ForgotPasswordComponent },
 	{ path: 'reset-password/:token', component: ResetPasswordComponent },
 	{
-		path: 'dummies', canActivate: [AuthGuard],
+		path: 'atividade', canActivate: [AuthGuard],
 		children: [
 			{ path: '', redirectTo: 'all', pathMatch: 'full' },
 			{
 				path: 'all',
 				children: [
 					{ path: '', redirectTo: '1', pathMatch: 'full' },
-					{ path: ':page_no', component: AllDummyComponent },
+					{ path: ':page_no', component: ListaAtividadeComponent },
 				]
 			},
-			{ path: 'create', component: CreateDummyComponent },
-			{ path: 'edit/:id', component: EditDummyComponent },
-			{ path: 'show/:id', component: ShowDummyComponent }
+			{ path: 'create', component: CreateAtividadeComponent },
+			{ path: 'edit/:id', component: EditAtividadeComponent },
+			{ path: 'show/:id', component: ShowAtividadeComponent }
 		]
 	},
 	{ path: '', component: HomeComponent },

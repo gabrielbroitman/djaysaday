@@ -8,21 +8,21 @@ import { Atividade } from '../../../_models/index';
   styleUrls: ['./show.component.scss']
 })
 export class ShowAtividadeComponent implements OnInit {
-	id:number;
-	keyword:string;
-	atividade:Atividade[] = [];
-	
-	constructor(public atividadeService: AtividadeService) { }
+  id: number;
+  keyword: string;
+  atividade: Atividade[] = [];
 
-	ngOnInit() {
-		this.show(this.id);
-	}
+  constructor(public atividadeService: AtividadeService) { }
 
-	show(id) {
-    	this.atividadeService.show(id).subscribe(res => {
-    		
-	    }, error => {
-	    	console.error(error);
-	    });
-    }
+  ngOnInit() {
+    this.show(this.id);
+  }
+
+  show(id) {
+    this.atividadeService.show(id).subscribe(res => {
+
+    }, error => {
+      console.error(error);
+    });
+  }
 }
