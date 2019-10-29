@@ -7,7 +7,7 @@ import { Component, OnInit, OnChanges } from '@angular/core';
 })
 export class HomeComponent implements OnInit, OnChanges {
 
-  public title: string = 'Angular 7';
+  public title: string = 'JsADay';
 
   constructor() { }
 
@@ -15,8 +15,7 @@ export class HomeComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges() {
-    let currentUser = JSON.parse(localStorage.getItem('user'));
-    console.log(currentUser);
+
 
   }
 

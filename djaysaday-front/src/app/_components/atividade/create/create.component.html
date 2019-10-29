@@ -1,17 +1,17 @@
-<div *ngIf="dummy">
+<div class="container">
 	<form >
 	  <div class="form-row">
 	    <div class="form-group col-md-6">
-	      <label for="column_1">Column 1</label>
-	      <input [(ngModel)]="dummy.column_1" type="text" class="form-control" id="column_1" name="column_1" placeholder="Value 1">
+	      <label for="nome">Nome</label>
+	      <input [(ngModel)]="atividade.nome" type="text" class="form-control" id="column_1" name="column_1" placeholder="Value 1">
 	    </div>
 	   <div class="form-group col-md-6">
-	      <label for="column_2">Column 2</label>
-	      <input [(ngModel)]="dummy.column_2" type="text" class="form-control" id="column_2" name="column_2" placeholder="Value 2">
+	      <label for="tipoAtividade">Tipo de atividade</label>
+	      <input [(ngModel)]="atividade.tipoAtividade" type="text" class="form-control" id="column_2" name="column_2" placeholder="Value 2">
 	    </div>
 	    <div class="form-group col-md-6">
-	      <label for="column_3">Column 3</label>
-	      <textarea [(ngModel)]="dummy.column_3" type="text" class="form-control" id="column_3" name="column_3" placeholder="Value 3">{{dummy.column_3}}</textarea>
+	      <label for="descricao">Descrição</label>
+	      <textarea [(ngModel)]="atividade.descricao" type="text" class="form-control" id="column_3" name="column_3" placeholder="Value 3"></textarea>
 	    </div>
 	  </div>
 	  

@@ -15,16 +15,24 @@ export class EditAtividadeComponent implements OnInit {
 	constructor(public atividadeService: AtividadeService) { }
 
 	ngOnInit() {
-		this.edit(this.unique_column);
+		this.atividadeService.all().subscribe(res => {
+			this.atividade = res[0];
+			console.log(this.atividade);
+		});
 	}
 
-	edit(unique_column) {
-		this.atividade={unique_column:1, column_1:'Value 1', column_2:'Value 2', column_3:'Value 3'};
-    }
 
-    update(unique_column, atividade) {
-    	this.atividadeService.update(unique_column, atividade).subscribe(res => {
-    		
+    update() {
+    	this.atividadeService.update(this.atividade).subscribe(res => {
+    		console.log(res);
+	    }, error => {
+	    	console.error(error);
+	    });
+	}
+	
+	delete() {
+    	this.atividadeService.destroy(this.atividade.id).subscribe(res => {
+    		console.log(res);
 	    }, error => {
 	    	console.error(error);
 	    });

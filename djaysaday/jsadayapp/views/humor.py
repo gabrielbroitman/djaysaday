@@ -25,7 +25,7 @@ def lista_humor(request):
     elif request.method == 'POST':
         serializer = HumorSerializer(data=request.data)
         if serializer.is_valid():
-            serializer.save()
+            serializer.save(autor=request.user)
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 

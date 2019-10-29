@@ -11,6 +11,8 @@ urlpatterns = [
     path('auth/', include('rest_auth.urls')),
     path('auth/signup/', include('rest_auth.registration.urls')),
     path('auth/refresh-token/', refresh_jwt_token),
+    path(r'^', include('django.contrib.auth.urls')),
+    
 
     # Atividades
     #path('user/getuserlogado/<int:pk>', views.detalhe_user, name='detalhe_user'),

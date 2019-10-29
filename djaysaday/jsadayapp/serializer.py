@@ -9,7 +9,7 @@ class AtividadeSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Atividade
-        fields = ('nome', 'descricao', 'tipoAtividade', 'data_criacao')
+        fields = ('id','nome', 'descricao', 'tipoAtividade', 'data_criacao')
 
 
 
@@ -17,13 +17,13 @@ class RealizacaoComAtividadeSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Realizacao
-        fields = ('atividade', 'descricao', 'data_realizacao')
+        fields = ('id', 'atividade', 'descricao', 'data_realizacao')
 
 
 class HumorSerializer(serializers.ModelSerializer):
     class Meta:
         model = Humor
-        fields = ('nome', 'nivel', 'sensacoes', 'realizacoes', 'descricao', 'data_criacao')
+        fields = ('id', 'nome', 'nivel', 'sensacoes', 'realizacoes', 'descricao', 'data_criacao')
 
 
 class UserSerializer(serializers.ModelSerializer):

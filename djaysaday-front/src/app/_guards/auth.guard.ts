@@ -8,11 +8,13 @@ export class AuthGuard implements CanActivate {
 
    canActivate() {
 	   if (localStorage.getItem('user')) {
+		   console.log("PODE!")
 	       // logged in so return true
 	       return true;
 	   }	   
 	   // not logged in so redirect to login page
 	   localStorage.clear();
+	   console.log("NAO PODE!")
 	   this.router.navigate(['/login']);
 	   return false;
 	}

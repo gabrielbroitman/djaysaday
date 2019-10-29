@@ -12,6 +12,7 @@ export class ResetPasswordComponent implements OnInit {
   passwordsMatch: boolean;
   warning: string;
   token: string;
+  uid: string;
 
   constructor(
   	public authenticationService: AuthenticationService,
@@ -21,10 +22,12 @@ export class ResetPasswordComponent implements OnInit {
   	this.passwordsMatch = true;
   	this.route.params.subscribe(params => {
       this.token = params['token'];
+      this.uid = params['uid'];
     });
   }
 
   ngOnInit() {
+
   }
 
   onChangePassword(newPassword: string, confirmedPassword: string){
@@ -38,9 +41,9 @@ export class ResetPasswordComponent implements OnInit {
       return;
     } else {
       this.passwordsMatch = true;
-      this.authenticationService.resetPassword(newPassword, confirmedPassword, this.token)
+      this.authenticationService.resetPassword(newPassword, confirmedPassword, this.token, this.uid)
         .subscribe(result => {
-        	if(result['success']) {
+        	if(result) {
         		this.router.navigate(['/login']);
         	} else {
         		let error = '';
@@ -55,7 +58,7 @@ export class ResetPasswordComponent implements OnInit {
 		        this.warning = error;
 		        this.passwordsMatch = false;
         	}
-      }, error => { console.log(error); });
+      }, error => { this.warning = error; this.passwordsMatch = false; console.log(error)});
     }
   }
 

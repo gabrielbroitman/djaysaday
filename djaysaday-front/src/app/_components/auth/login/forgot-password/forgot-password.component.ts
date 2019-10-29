@@ -27,17 +27,18 @@ export class ForgotPasswordComponent implements OnInit {
     this.waiting = true;
     this.authenticationService.sendPasswordResetEmail(this.email)
     .subscribe(result => {
-      if(result['success']) {
+      console.log(result);
+      if(result) {
         this.message = true; 
       } else {
         let error = '';
-        let messageArr = result['message']['email'];
+        let messageArr = result;
         if(messageArr) {
           for(let i = 0; i < messageArr.length; i++ ) {
             error += messageArr[i] + ' ';
           }
         } else {
-          error = result['message'];
+          error = result;
         }
         this.error = error;
         this.emailNotFound = true;

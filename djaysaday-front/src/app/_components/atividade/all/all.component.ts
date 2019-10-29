@@ -9,18 +9,12 @@ import { Atividade, Paginate } from '../../../_models/index';
   styleUrls: ['./all.component.scss']
 })
 export class ListaAtividadeComponent implements OnInit {
-	pageNo: number=1;
 	keyword: string='';
-	perPage: number=10;
-	sortBy: string='column_1';
-	orderBy: string='desc';
-	atividades: Atividade[] = [];
-	paginate: Paginate;
+
+	atividades: Atividade[];
 	
 	constructor(public atividadeService: AtividadeService, public route: ActivatedRoute, public router: Router) {
-		this.route.params.subscribe(val => {
-			this.pageNo = parseInt(val.page_no);
-		});
+		
 	}
 
 	ngOnInit() {
@@ -28,10 +22,10 @@ export class ListaAtividadeComponent implements OnInit {
 	}
 
 	all() {
-    	this.atividadeService.all(this.pageNo, this.keyword, this.perPage, this.sortBy, this.orderBy).subscribe(res => {
-    		this.paginate = res['atividades'];
-    		this.atividades = res['atividades'].data;
-    		this.paginate.pages = this.createArray(1, this.paginate.last_page);
+    	this.atividadeService.all().subscribe(res => {
+    		console.log(res);
+    		this.atividades = res;
+    		
 	    }, error => {
 	    	// for testing 
     		// this.atividades = [{unique_column:1, column_1:'Value 1', column_2:'Value 2', column_3:'Value 3'}];
@@ -50,9 +44,7 @@ export class ListaAtividadeComponent implements OnInit {
     }
 
     sortResults(sortBy) {
-    	this.sortBy = sortBy;
-    	this.orderBy = (this.orderBy == 'desc') ? 'asc' : 'desc';
-    	this.all();
+    	
     }
 
     createArray(from, to) {

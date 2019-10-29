@@ -20,6 +20,12 @@ import { AtividadeService } from '../_services';
     EditAtividadeComponent,
     ShowAtividadeComponent
   ],
+  exports: [
+    ListaAtividadeComponent,
+    CreateAtividadeComponent,
+    EditAtividadeComponent,
+    ShowAtividadeComponent
+  ],
   providers: [AtividadeService]
 })
 export class AtividadeModule { }

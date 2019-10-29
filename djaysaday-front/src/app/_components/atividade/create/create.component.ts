@@ -23,10 +23,11 @@ export class CreateAtividadeComponent implements OnInit {
 
 	}
 
-	store(atividade) {
-		this.atividadeService.store(atividade).subscribe(res => {
-			if (res['status'] == 'ok') {
-				this.router.navigate(['/' + this.atividadeService.module + '/edit/' + res['atividade'].id]);
+	store() {
+		console.log(this.atividade);
+		this.atividadeService.store(this.atividade).subscribe(res => {
+			if (res) {
+				this.router.navigate(['/' + this.atividadeService.module + '/edit/' + res.id]);
 			}
 		}, error => {
 			console.error(error);

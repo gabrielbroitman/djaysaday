@@ -69,7 +69,7 @@ export class AuthenticationService {
     }
 
     sendPasswordResetEmail(email: string): Observable<any> {
-        return this.http.post(this.apiUrl + '/auth/recovery', { email: email })
+        return this.http.post(this.apiUrl + '/password/reset/', { email: email })
             .pipe(
                 map((response: Response) => {
                     return response;
@@ -77,8 +77,8 @@ export class AuthenticationService {
             );
     }
 
-    resetPassword(newPassword: string, confirmedPassword: string, token: string): Observable<any> {
-        return this.http.post(this.apiUrl + '/auth/reset', { password: newPassword, password_confirmation: confirmedPassword, token: token })
+    resetPassword(newPassword: string, confirmedPassword: string, token: string, uid: string): Observable<any> {
+        return this.http.post(this.apiUrl + '/password/reset/confirm/', {uid:uid, new_password1: newPassword, new_password2: confirmedPassword, token: token })
             .pipe(
                 map((response: Response) => {
                     return response;

@@ -99,6 +99,8 @@ JWT_AUTH = {
 
 SITE_ID = 1
 ACCOUNT_EMAIL_VERIFICATION = "none"
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+LOGOUT_ON_PASSWORD_CHANGE = False
 
 # JWT settings
 

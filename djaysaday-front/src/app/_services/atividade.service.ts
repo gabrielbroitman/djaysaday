@@ -6,7 +6,7 @@ import { environment } from '../../environments/environment';
 
 @Injectable()
 export class AtividadeService {
-	public readonly apiUrl = environment.adminApiUrl;
+	public readonly apiUrl = environment.apiUrl;
     public readonly baseUrl = environment.baseUrl;
     public module:string = 'atividade';
 
@@ -14,16 +14,16 @@ export class AtividadeService {
         
     }
 
-    all(pageNo, keyword, perPage, sortBy, orderBy) {
-    	return this.http.get(this.apiUrl+'/'+this.module+'?page='+pageNo+'&keyword='+keyword+'&per_page='+keyword+'&sort_by='+keyword+'&order_by'+keyword );
+    all(): any {
+    	return this.http.get(this.apiUrl+'/'+this.module+'/listar');
     }
 
     create() {
         return this.http.get(this.apiUrl+'/'+this.module+'/create');
     }
 
-    store(obj) {
-    	return this.http.post(this.apiUrl+'/'+this.module+'', obj );
+    store(obj): any {
+    	return this.http.post(this.apiUrl+'/'+this.module+'/nova/', obj );
     }
 
     edit(id) {
@@ -34,8 +34,8 @@ export class AtividadeService {
         return this.http.get(this.apiUrl+'/'+this.module+'/'+id );
     }
 
-    update(id, obj) {
-    	return this.http.patch(this.apiUrl+'/'+this.module+'/'+id, obj );
+    update(obj) {
+    	return this.http.put(this.apiUrl+'/'+this.module+'/' + obj.id + '/edit/', obj );
     }
 
     destroy(id) {
