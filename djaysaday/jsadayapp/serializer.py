@@ -5,8 +5,14 @@ from django.conf import settings
 from .models import *
 
 
-class AtividadeSerializer(serializers.ModelSerializer):
+class TipoAtividadeSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = TipoAtividade
+        fields = ('nome', 'codigo', 'descricao')
 
+
+class AtividadeSerializer(serializers.ModelSerializer):
+    tipoAtividade = TipoAtividadeSerializer(read_only=True)
     class Meta:
         model = Atividade
         fields = ('id','nome', 'descricao', 'tipoAtividade', 'data_criacao')
