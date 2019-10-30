@@ -20,7 +20,7 @@ def lista_realizacao(request):
     List all code snippets, or create a new snippet.
     """
     if request.method == 'GET':
-        realizacoes = Realizacao.objects.filter(data_realizacao__lte=timezone.now()).order_by('data_realizacao')
+        realizacoes = Realizacao.objects.filter(data_realizacao__lte=timezone.now() and autor==request.user).order_by('data_realizacao')
         serializer = RealizacaoComAtividadeSerializer(realizacoes, many=True)
         return Response(serializer.data)
 
