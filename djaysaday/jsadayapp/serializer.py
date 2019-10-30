@@ -12,7 +12,7 @@ class TipoAtividadeSerializer(serializers.ModelSerializer):
 
 
 class AtividadeSerializer(serializers.ModelSerializer):
-    tipoAtividade = TipoAtividadeSerializer(read_only=True)
+    tipoAtividade = TipoAtividadeSerializer
     class Meta:
         model = Atividade
         fields = ('id','nome', 'descricao', 'tipoAtividade', 'data_criacao')
@@ -20,7 +20,7 @@ class AtividadeSerializer(serializers.ModelSerializer):
 
 
 class RealizacaoComAtividadeSerializer(serializers.ModelSerializer):
-
+    atividade = AtividadeSerializer()
     class Meta:
         model = Realizacao
         fields = ('id', 'atividade', 'descricao', 'data_realizacao')

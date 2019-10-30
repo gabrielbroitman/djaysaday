@@ -18,6 +18,10 @@ export class AtividadeService {
     	return this.http.get(this.apiUrl+'/'+this.module+'/listar');
     }
 
+    atividadeMaisUtilizada(): any {
+    	return this.http.get(this.apiUrl+'/'+this.module+'/listar/rank');
+    }
+
     create() {
         return this.http.get(this.apiUrl+'/'+this.module+'/create');
     }

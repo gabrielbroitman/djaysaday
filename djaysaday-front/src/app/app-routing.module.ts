@@ -3,6 +3,7 @@ import { RegisterComponent, LoginComponent, ForgotPasswordComponent, ResetPasswo
 import { HomeComponent } from './_components/home/home.component';
 import { AuthGuard } from './_guards/auth.guard';
 import { CreateAtividadeComponent, EditAtividadeComponent, ShowAtividadeComponent, ListaAtividadeComponent } from './_components/atividade';
+import { DashboardAtividadeComponent } from './_components/atividade/dashboard/dashboard.component';
 
 const appRoutes: Routes = [
 	{ path: '', component: HomeComponent, pathMatch: 'full' },
@@ -16,10 +17,11 @@ const appRoutes: Routes = [
 	{
 		path: 'atividade', canActivate: [AuthGuard],
 		children: [
+			{ path: 'listar', component: ListaAtividadeComponent },
 			{ path: 'create', component: CreateAtividadeComponent },
 			{ path: 'edit/:id', component: EditAtividadeComponent },
 			{ path: ':id', component: EditAtividadeComponent },
-			{ path: '', component: ListaAtividadeComponent, pathMatch: 'full' },
+			{ path: '', component: DashboardAtividadeComponent, pathMatch: 'full' },
 		]
 	}
 ];

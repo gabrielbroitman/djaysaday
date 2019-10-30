@@ -35,7 +35,7 @@ import { HomeComponent } from './_components/home/home.component';
     ForgotPasswordComponent,
     ResetPasswordComponent,
     NavigationComponent,
-    HomeComponent
+    HomeComponent,
   ],
   imports: [
     BrowserModule,

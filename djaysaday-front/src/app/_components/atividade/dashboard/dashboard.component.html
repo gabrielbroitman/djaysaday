@@ -1,0 +1,20 @@
+<div class="container">
+  <div class="row">
+    <span class="col-auto">
+      <button [routerLink]="['/atividade/create']" class="btn btn-primary">Criar atividade</button>
+    </span>
+    <span class="col-auto">
+      <button [routerLink]="['/atividade/listar']" class="btn btn-primary">Listar atividades</button>
+    </span>
+  </div>
+  <br>
+  <div class="row">
+    <span class="col-auto">
+      <h1>Atividades mais realizadas por você:</h1>
+    </span>
+  </div>
+  <br>
+  <div class="row">
+    <app-lista-atividade [rank]="true"></app-lista-atividade>
+  </div>
+</div>

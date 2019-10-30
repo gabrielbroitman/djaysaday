@@ -51,7 +51,7 @@ class Realizacao(models.Model):
     autor = models.ForeignKey(settings.AUTH_USER_MODEL,
                               on_delete=models.CASCADE)
     atividade = models.ForeignKey(
-        'Atividade', on_delete=models.CASCADE, default=None)
+        'Atividade', on_delete=models.CASCADE, default=None, related_name='realizacao_atividade')
     descricao = models.TextField()
     data_realizacao = models.DateTimeField(default=timezone.now)
     # data_ultima_utilizacao = models.DateTimeField(blank=True, null=True) #

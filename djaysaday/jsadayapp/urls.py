@@ -21,6 +21,7 @@ urlpatterns = [
 
     # Atividades
     path('atividade/listar/', views.lista_atividade, name='lista_atividade'),
+    path('atividade/listar/rank', views.lista_atividade_rank, name='lista_atividade_rank'),
     path('atividade/<int:pk>/', views.detalhe_atividade, name='detalhe_atividade'),
     path('atividade/nova/', views.lista_atividade, name='nova_atividade'),
     path('atividade/<int:pk>/edit/',

@@ -9,7 +9,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let atividade of atividades">
+      <tr [routerLink]="['/atividade', atividade.id]" *ngFor="let atividade of atividades">
         <td>{{ atividade.nome }}</td>
         <td>{{ atividade.descricao }}</td>
         <td>{{ atividade.tipoAtividade }}</td>

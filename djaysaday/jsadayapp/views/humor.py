@@ -18,7 +18,7 @@ def lista_humor(request):
     List all code snippets, or create a new snippet.
     """
     if request.method == 'GET':
-        humores = Humor.objects.filter(data_criacao__lte=timezone.now()).order_by('data_criacao')
+        humores = Humor.objects.filter(data_criacao__lte=timezone.now() and autor==request.user).order_by('data_criacao')
         serializer = HumorSerializer(humores, many=True)
         return Response(serializer.data)
 

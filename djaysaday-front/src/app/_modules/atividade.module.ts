@@ -5,6 +5,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from './material.module';
 import { ListaAtividadeComponent, CreateAtividadeComponent, EditAtividadeComponent, ShowAtividadeComponent } from '../_components/atividade/index';
 import { AtividadeService } from '../_services';
+import { DashboardAtividadeComponent } from '../_components/atividade/dashboard/dashboard.component';
 
 @NgModule({
   imports: [
@@ -18,13 +19,15 @@ import { AtividadeService } from '../_services';
     ListaAtividadeComponent,
     CreateAtividadeComponent,
     EditAtividadeComponent,
-    ShowAtividadeComponent
+    ShowAtividadeComponent,
+    DashboardAtividadeComponent
   ],
   exports: [
     ListaAtividadeComponent,
     CreateAtividadeComponent,
     EditAtividadeComponent,
-    ShowAtividadeComponent
+    ShowAtividadeComponent,
+    DashboardAtividadeComponent
   ],
   providers: [AtividadeService]
 })

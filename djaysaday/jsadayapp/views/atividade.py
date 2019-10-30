@@ -1,5 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.utils import timezone
+from django.db.models import Count
+from django.db import models
 from rest_framework import status
 from django.http import HttpResponse, JsonResponse
 from rest_framework.parsers import JSONParser
@@ -19,7 +21,7 @@ def lista_atividade(request):
     List all code snippets, or create a new snippet.
     """
     if request.method == 'GET':
-        atividades = Atividade.objects.all()
+        atividades = Atividade.objects.filter(autor=request.user)
         serializer = AtividadeSerializer(atividades, many=True)
         return Response(serializer.data)
 
@@ -29,6 +31,17 @@ def lista_atividade(request):
             serializer.save(autor=request.user)
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+@api_view(['GET'])
+def lista_atividade_rank(request):
+    """
+    List all code snippets, or create a new snippet.
+    """
+    if request.method == 'GET':
+        atividades = Atividade.objects.annotate(realizacao_count=Count('realizacao_atividade')).filter(realizacao_count__gt = 0 and autor==request.user).order_by('-realizacao_count')
+        serializer = AtividadeSerializer(atividades, many=True)
+        return Response(serializer.data)
+
 
 @api_view(['GET', 'PUT', 'DELETE'])
 def detalhe_atividade(request, pk):
