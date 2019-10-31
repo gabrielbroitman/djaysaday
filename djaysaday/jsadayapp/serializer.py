@@ -24,6 +24,23 @@ class RealizacaoComAtividadeSerializer(serializers.ModelSerializer):
     class Meta:
         model = Realizacao
         fields = ('id', 'atividade', 'descricao', 'data_realizacao')
+    
+    def create(self, validated_data):
+        atividade_data = validated_data.pop('atividade', None)
+        atividade = Atividade.objects.get_or_create(**atividade_data)[0]
+        validated_data['atividade'] = atividade
+        realizacao = Realizacao.objects.create(**validated_data)
+        return realizacao
+
+    def update(self, instance, validated_data):
+        atividade_data = validated_data.pop('atividade', None)
+        atividade = Atividade.objects.get_or_create(**atividade_data)[0]
+        validated_data['atividade'] = atividade
+        instance.atividade = validated_data['atividade']
+        instance.descricao = validated_data['descricao']
+        instance.data_realizacao = validated_data['data_realizacao']
+        instance.save()
+        return instance
 
 
 class HumorSerializer(serializers.ModelSerializer):

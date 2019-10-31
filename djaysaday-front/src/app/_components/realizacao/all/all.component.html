@@ -1,0 +1,20 @@
+<div class="container">
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th id="col-id" scope="col">Hora da realização</th>
+        <th id="col-id" scope="col">Atividade</th>
+        <th id="col-id" scope="col">Descricao da realização</th>
+        <th id="col-id" scope="col">Tipo de atividade</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr [routerLink]="['/realizacao', realizacao.id]" *ngFor="let realizacao of realizacoes">
+        <td>{{ realizacao.data_realizacao }}</td>
+        <td>{{ realizacao.atividade.nome }}</td>
+        <td>{{ realizacao.descricao }}</td>
+        <td>{{ realizacao.atividade.tipoAtividade }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

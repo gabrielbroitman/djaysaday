@@ -1,0 +1,20 @@
+<div class="container">
+  <div class="row">
+    <span class="col-auto">
+      <button [routerLink]="['/realizacao/create']" class="btn btn-primary">Criar realizacao</button>
+    </span>
+    <span class="col-auto">
+      <button [routerLink]="['/realizacao/listar']" class="btn btn-primary">Listar realizacoes</button>
+    </span>
+  </div>
+  <br>
+  <div class="row">
+    <span class="col-auto">
+      <h1>Realizacoes mais realizadas por você:</h1>
+    </span>
+  </div>
+  <br>
+  <div class="row">
+    <app-lista-realizacao [rank]="true"></app-lista-realizacao>
+  </div>
+</div>

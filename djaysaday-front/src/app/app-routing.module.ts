@@ -4,6 +4,8 @@ import { HomeComponent } from './_components/home/home.component';
 import { AuthGuard } from './_guards/auth.guard';
 import { CreateAtividadeComponent, EditAtividadeComponent, ShowAtividadeComponent, ListaAtividadeComponent } from './_components/atividade';
 import { DashboardAtividadeComponent } from './_components/atividade/dashboard/dashboard.component';
+import { ListaRealizacaoComponent, CreateRealizacaoComponent, EditRealizacaoComponent } from './_components/realizacao';
+import { DashboardRealizacaoComponent } from './_components/realizacao/dashboard/dashboard.component';
 
 const appRoutes: Routes = [
 	{ path: '', component: HomeComponent, pathMatch: 'full' },
@@ -22,6 +24,18 @@ const appRoutes: Routes = [
 			{ path: 'edit/:id', component: EditAtividadeComponent },
 			{ path: ':id', component: EditAtividadeComponent },
 			{ path: '', component: DashboardAtividadeComponent, pathMatch: 'full' },
+		]
+	},
+
+	//REALIZACAO ROUTER
+	{
+		path: 'realizacao', canActivate: [AuthGuard],
+		children: [
+			{ path: 'listar', component: ListaRealizacaoComponent },
+			{ path: 'create', component: CreateRealizacaoComponent },
+			{ path: 'edit/:id', component: EditRealizacaoComponent },
+			{ path: ':id', component: EditRealizacaoComponent },
+			{ path: '', component: DashboardRealizacaoComponent, pathMatch: 'full' },
 		]
 	}
 ];

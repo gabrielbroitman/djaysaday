@@ -20,7 +20,7 @@ def lista_realizacao(request):
     List all code snippets, or create a new snippet.
     """
     if request.method == 'GET':
-        realizacoes = Realizacao.objects.filter(data_realizacao__lte=timezone.now() and autor==request.user).order_by('data_realizacao')
+        realizacoes = Realizacao.objects.filter(autor=request.user).order_by('data_realizacao')
         serializer = RealizacaoComAtividadeSerializer(realizacoes, many=True)
         return Response(serializer.data)
 
@@ -49,7 +49,7 @@ def detalhe_realizacao(request, pk):
     elif request.method == 'PUT':
         serializer = RealizacaoComAtividadeSerializer(realizacao, data=request.data)
         if serializer.is_valid():
-            serializer.save()
+            serializer.save(autor=request.user)
             return Response(serializer.data)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 

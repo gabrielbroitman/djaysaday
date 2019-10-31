@@ -37,7 +37,7 @@ urlpatterns = [
     path('realizacao/listar', views.lista_realizacao, name='lista_realizacao'),
     path('realizacao/<int:pk>/', views.detalhe_realizacao,
          name='detalhe_realizacao'),
-    path('realizacao/novo/', views.lista_realizacao, name='nova_realizacao'),
+    path('realizacao/nova/', views.lista_realizacao, name='nova_realizacao'),
     path('realizacao/<int:pk>/edit/',
          views.detalhe_realizacao, name='edicao_realizacao'),
 
