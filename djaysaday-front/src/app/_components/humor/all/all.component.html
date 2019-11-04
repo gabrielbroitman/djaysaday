@@ -1,0 +1,22 @@
+<div class="container">
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th id="col-id" scope="col">Hora da criação</th>
+        <th id="col-id" scope="col">Humor</th>
+        <th id="col-id" scope="col">Sensacoes</th>
+        <th id="col-id" scope="col">Realizacoes</th>
+        <th id="col-id" scope="col">Descrição</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr [routerLink]="['/humor', humor.id]" *ngFor="let humor of humores">
+        <td>{{ humor.data_criacao }}</td>
+        <td>{{ humor.nivel }}</td>
+        <td>{{ humor.sensacoes }}</td>
+        <td>{{ humor.realizacoes[0].atividade.nome }}</td>
+        <td>{{ humor.descricao }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

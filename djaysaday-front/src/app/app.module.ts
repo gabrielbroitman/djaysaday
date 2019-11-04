@@ -26,6 +26,7 @@ import { LoginComponent, RegisterComponent, ForgotPasswordComponent, ResetPasswo
 import { NavigationComponent } from './_components/navigation/navigation.component';
 import { HomeComponent } from './_components/home/home.component';
 import { DatePipe } from '@angular/common';
+import { HumorModule } from './_modules/humor.module';
 
 
 @NgModule({
@@ -43,6 +44,7 @@ import { DatePipe } from '@angular/common';
     FormsModule,
     ReactiveFormsModule,
     AtividadeModule,
+    HumorModule,
     RealizacaoModule,
     routing,
     HttpClientModule,

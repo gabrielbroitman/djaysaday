@@ -34,5 +34,5 @@ class RealizacaoComAtividadeForm(forms.ModelForm):
 class HumorForm(forms.ModelForm):
     class Meta:
         model = Humor
-        fields = ('nome', 'nivel', 'sensacoes', 'realizacoes')
+        fields = ('nivel', 'sensacoes', 'realizacoes')
         

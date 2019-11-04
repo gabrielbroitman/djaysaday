@@ -32,6 +32,7 @@ urlpatterns = [
     path('humor/listar', views.lista_humor, name='lista_humor'),
     path('humor/novo/', views.lista_humor, name='novo_humor'),
     path('humor/<int:pk>/edit/', views.detalhe_humor, name='edicao_humor'),
+     path('sensacoes/listar', views.lista_sensacoes, name='lista_sensacoes'),
 
     # Realizações
     path('realizacao/listar', views.lista_realizacao, name='lista_realizacao'),

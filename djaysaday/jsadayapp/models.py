@@ -3,11 +3,11 @@ from django.conf import settings
 from django.utils import timezone
 
 NIVEL = [
-    ('-2', 'Muito negativo'),
-    ('-1', 'Negativo'),
-    ('0', 'Neutro'),
-    ('1', 'Positivo'),
-    ('2', 'Muito positivo'),
+    ('0', 'Muito negativo'),
+    ('1', 'Negativo'),
+    ('2', 'Neutro'),
+    ('3', 'Positivo'),
+    ('4', 'Muito positivo'),
 ]
 
 TIPO_ATIVIDADE = [
@@ -66,14 +66,14 @@ class Realizacao(models.Model):
 class Humor(models.Model):
     autor = models.ForeignKey(settings.AUTH_USER_MODEL,
                               on_delete=models.CASCADE)
-    nome = models.CharField(max_length=30)
+    # nome = models.CharField(max_length=30)
     # -2 pra pior +2 pra melhor
     nivel = models.CharField(max_length=1, choices=NIVEL, default=0,)
     data_criacao = models.DateTimeField(default=timezone.now)
     sensacoes = models.ManyToManyField(
-        'Sensacao', related_name='humores')
+        'Sensacao', related_name='humores_sensacoes')
     
-    realizacoes = models.ManyToManyField('Realizacao', default=None)
+    realizacoes = models.ManyToManyField('Realizacao', related_name='humores_realizacoes')
     descricao = models.TextField(blank=True, default='')
     # data_ultima_utilizacao = models.DateTimeField(blank=True, null=True) #
 
@@ -81,7 +81,7 @@ class Humor(models.Model):
         self.save()
 
     def __str__(self):
-        return self.nome
+        return self.nivel
 
 
 class Sensacao(models.Model):

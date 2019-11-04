@@ -1,0 +1,20 @@
+<div class="container">
+  <div class="row">
+    <span class="col-auto">
+      <button [routerLink]="['/humor/create']" class="btn btn-primary">Criar humor</button>
+    </span>
+    <span class="col-auto">
+      <button [routerLink]="['/humor/listar']" class="btn btn-primary">Listar humores</button>
+    </span>
+  </div>
+  <br>
+  <div class="row">
+    <span class="col-auto">
+      <h1>Sensações mais sentidas por você:</h1>
+    </span>
+  </div>
+  <br>
+  <div class="row">
+    <app-lista-humor [rank]="true"></app-lista-humor>
+  </div>
+</div>

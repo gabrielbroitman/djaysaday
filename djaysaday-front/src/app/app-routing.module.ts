@@ -6,6 +6,8 @@ import { CreateAtividadeComponent, EditAtividadeComponent, ShowAtividadeComponen
 import { DashboardAtividadeComponent } from './_components/atividade/dashboard/dashboard.component';
 import { ListaRealizacaoComponent, CreateRealizacaoComponent, EditRealizacaoComponent } from './_components/realizacao';
 import { DashboardRealizacaoComponent } from './_components/realizacao/dashboard/dashboard.component';
+import { ListaHumorComponent, CreateHumorComponent, EditHumorComponent } from './_components/humor';
+import { DashboardHumorComponent } from './_components/humor/dashboard/dashboard.component';
 
 const appRoutes: Routes = [
 	{ path: '', component: HomeComponent, pathMatch: 'full' },
@@ -36,6 +38,18 @@ const appRoutes: Routes = [
 			{ path: 'edit/:id', component: EditRealizacaoComponent },
 			{ path: ':id', component: EditRealizacaoComponent },
 			{ path: '', component: DashboardRealizacaoComponent, pathMatch: 'full' },
+		]
+	},
+
+	//HUMOR ROUTER
+	{
+		path: 'humor', canActivate: [AuthGuard],
+		children: [
+			{ path: 'listar', component: ListaHumorComponent },
+			{ path: 'create', component: CreateHumorComponent },
+			{ path: 'edit/:id', component: EditHumorComponent },
+			{ path: ':id', component: EditHumorComponent },
+			{ path: '', component: DashboardHumorComponent, pathMatch: 'full' },
 		]
 	}
 ];
