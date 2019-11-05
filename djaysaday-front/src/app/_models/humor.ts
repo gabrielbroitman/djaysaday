@@ -4,7 +4,7 @@ export class Humor {
 	id: number;
 	nome: string;
 	nivel: number;
-	data_criacao: Date;
+	data_criacao: any;
 	descricao: string;
 	realizacoes: Realizacao[];
 	sensacoes: Sensacao[];

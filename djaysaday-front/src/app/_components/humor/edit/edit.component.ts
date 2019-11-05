@@ -18,7 +18,15 @@ export class EditHumorComponent implements OnInit {
 	niveis = Nivel;
 	idHumor: number;
 
-	constructor(public humorService: HumorService, public realizacaoService: RealizacaoService, public router: Router, public route: ActivatedRoute) {
+
+	realizacoesHumor = [];
+	sensacoesHumor = [];
+	selecionadosRealizacao = [];
+	selecionadosSensacao = [];
+
+
+
+	constructor(public humorService: HumorService, public realizacaoService: RealizacaoService, public datePipe: DatePipe, public router: Router, public route: ActivatedRoute) {
 		this.humor = new Humor();
 	}
 
@@ -46,7 +54,10 @@ export class EditHumorComponent implements OnInit {
 
 
 	update() {
+		this.humor.realizacoes = this.realizacoesHumor;
+		this.humor.sensacoes = this.sensacoesHumor;
 		this.humorService.update(this.humor).subscribe(res => {
+			this.humor.data_criacao = this.datePipe.transform(res.data_criacao, 'yyyy-MM-ddThh:mm');
 			console.log(res);
 		}, error => {
 			console.error(error);
@@ -60,4 +71,25 @@ export class EditHumorComponent implements OnInit {
 			console.error(error);
 		});
 	}
+
+	adicionaSensacao(event, index: number) {
+		if (this.sensacoesHumor.includes(this.sensacoes[index])) {
+			this.sensacoesHumor.splice(this.sensacoesHumor.indexOf(this.sensacoes[index]), 1);
+		} else if (!this.sensacoesHumor.includes(this.sensacoes[index])) {
+			this.sensacoesHumor.push(this.sensacoes[index]);
+		}
+		this.selecionadosSensacao[index] = event;
+		console.log(this.sensacoesHumor);
+	}
+
+	adicionaRealizacao(event, index: number) {
+		if (this.realizacoesHumor.includes(this.realizacoes[index])) {
+			this.realizacoesHumor.splice(this.sensacoesHumor.indexOf(this.realizacoes[index]), 1);
+		} else if (!this.realizacoesHumor.includes(this.realizacoes[index])) {
+			this.realizacoesHumor.push(this.realizacoes[index]);
+		}
+		this.selecionadosRealizacao[index] = event;
+		console.log(this.realizacoesHumor);
+	}
+
 }

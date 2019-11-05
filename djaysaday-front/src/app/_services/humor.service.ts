@@ -42,7 +42,7 @@ export class HumorService {
         return this.http.get(this.apiUrl+'/'+this.module+'/'+id );
     }
 
-    update(obj) {
+    update(obj): any {
     	return this.http.put(this.apiUrl+'/'+this.module+'/' + obj.id + '/edit/', obj );
     }
 

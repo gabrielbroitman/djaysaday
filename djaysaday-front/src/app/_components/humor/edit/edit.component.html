@@ -10,14 +10,18 @@
 			</div>
 			<div class="form-group col-md-6">
 				<label for="nome">Sensação(sensações) até o momento</label><br>
-				<span *ngFor="let sensacao of sensacoes">
-					<input type="checkbox"> {{sensacao.nome}}
+				<span *ngFor="let sensacao of sensacoes; let i = index">
+					<input type="checkbox" [(ngModel)]="selecionadosSensacao[i]"
+						(change)="adicionaSensacao(selecionadosSensacao[i]? true: false, i)" name="sensacoes">
+					{{sensacao.nome}}
 				</span>
 			</div>
 			<div class="form-group col-md-6">
 				<label for="nome">Realização(ou realizações) até o momento</label><br>
-				<span *ngFor="let realizacao of realizacoes">
-					<input type="checkbox"> {{realizacao.atividade.nome}}
+				<span *ngFor="let realizacao of realizacoes; let i = index">
+					<input type="checkbox" [(ngModel)]="selecionadosRealizacao[i]"
+						(change)="adicionaRealizacao(selecionadosRealizacao[i]? true: false, i)" name="realizacoes">
+					{{realizacao.atividade.nome}}
 				</span>
 			</div>
 			<div class="form-group col-md-6">
@@ -30,7 +34,7 @@
 			</div>
 		</div>
 
-		<button type="submit" (click)="store();" class="btn btn-primary">Store</button>
+		<button type="submit" (click)="update();" class="btn btn-primary">Store</button>
 		<button type="submit" (click)="delete();" class="btn btn-primary">Delete</button>
 	</form>
 </div>
