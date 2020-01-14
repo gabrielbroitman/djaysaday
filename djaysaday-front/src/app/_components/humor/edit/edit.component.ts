@@ -2,7 +2,7 @@ import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { HumorService, RealizacaoService } from '../../../_services/index';
 import { Humor, Realizacao, Sensacao, Nivel } from '../../../_models/index';
 import { ActivatedRoute, Router } from '@angular/router';
-import { DatePipe } from '@angular/common';
+import { DatePipe, Location } from '@angular/common';
 
 @Component({
 	selector: 'app-edit-humor',
@@ -26,7 +26,7 @@ export class EditHumorComponent implements OnInit {
 
 
 
-	constructor(public humorService: HumorService, public realizacaoService: RealizacaoService, public datePipe: DatePipe, public router: Router, public route: ActivatedRoute) {
+	constructor(public humorService: HumorService, private _location:Location, public realizacaoService: RealizacaoService, public datePipe: DatePipe, public router: Router, public route: ActivatedRoute) {
 		this.humor = new Humor();
 	}
 
@@ -92,4 +92,7 @@ export class EditHumorComponent implements OnInit {
 		console.log(this.realizacoesHumor);
 	}
 
+	voltar() {
+		this._location.back();
+	}
 }

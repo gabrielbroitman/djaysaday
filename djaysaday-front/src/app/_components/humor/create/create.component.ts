@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { Humor, Nivel, Realizacao, Sensacao } from '../../../_models/index';
 import { HumorService } from '../../../_services/humor.service';
 import { AtividadeService, RealizacaoService } from '../../../_services';
+import { Location } from '@angular/common';
 
 @Component({
 	selector: 'app-create-humor',
@@ -27,7 +28,7 @@ export class CreateHumorComponent implements OnInit {
 
 
 
-	constructor(public humorService: HumorService, public atividadeService: AtividadeService, public realizacaoService: RealizacaoService, public router: Router) {
+	constructor(public humorService: HumorService, private _location: Location, public atividadeService: AtividadeService, public realizacaoService: RealizacaoService, public router: Router) {
 		this.humor = new Humor();
 		this.selecionadosRealizacao = [];
 		this.selecionadosSensacao = [];
@@ -75,5 +76,9 @@ export class CreateHumorComponent implements OnInit {
 		}, error => {
 			console.error(error);
 		});
+	}
+
+	voltar() {
+		this._location.back();
 	}
 }

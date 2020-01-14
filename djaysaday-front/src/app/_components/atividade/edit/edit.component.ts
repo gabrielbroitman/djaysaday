@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AtividadeService } from '../../../_services/index';
-import { Atividade } from '../../../_models/index';
+import { Location } from '@angular/common';
+import { Atividade, TIPOS_ATIVIDADE } from '../../../_models/index';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 
 @Component({
@@ -13,7 +14,9 @@ export class EditAtividadeComponent implements OnInit {
 	keyword: string;
 	atividade;
 
-	constructor(public atividadeService: AtividadeService, public router: Router, public route: ActivatedRoute) { }
+	tiposAtividade = TIPOS_ATIVIDADE;
+
+	constructor(public atividadeService: AtividadeService, public router: Router, public route: ActivatedRoute, private _location: Location) { }
 
 	ngOnInit() {
 		this.route.params.subscribe(params => {
@@ -41,5 +44,9 @@ export class EditAtividadeComponent implements OnInit {
 		}, error => {
 			console.error(error);
 		});
+	}
+
+	voltar() {
+		this._location.back();
 	}
 }

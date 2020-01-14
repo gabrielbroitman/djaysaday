@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { Realizacao, Atividade } from '../../../_models/index';
 import { RealizacaoService } from '../../../_services/realizacao.service';
 import { AtividadeService } from '../../../_services';
+import { Location } from '@angular/common';
 
 @Component({
 	selector: 'app-create-realizacao',
@@ -15,7 +16,7 @@ export class CreateRealizacaoComponent implements OnInit {
 	realizacao: Realizacao;
 	atividades: Atividade[];
 
-	constructor(public realizacaoService: RealizacaoService, public atividadeService: AtividadeService,public router: Router) { 
+	constructor(private _location: Location, public realizacaoService: RealizacaoService, public atividadeService: AtividadeService,public router: Router) { 
 		this.realizacao = new Realizacao();
 	}
 
@@ -36,5 +37,9 @@ export class CreateRealizacaoComponent implements OnInit {
 		}, error => {
 			console.error(error);
 		});
+	}
+
+	voltar() {
+		this._location.back();
 	}
 }

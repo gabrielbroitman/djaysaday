@@ -1,4 +1,5 @@
 <div class="container">
+	<i class="fa fa-arrow-circle-o-left float-right" (click)="voltar()" aria-hidden="true"></i>
 	<form>
 		<div class="form-row">
 			<div class="form-group col-md-6">
@@ -20,7 +21,11 @@
 			</div>
 		</div>
 
-		<button type="submit" (click)="update();" class="btn btn-primary">Store</button>
-		<button type="submit" (click)="delete();" class="btn btn-primary">Delete</button>
+		<div class="float-right">
+			<button type="submit" (click)="update();" class="btn btn-success ">Salvar</button>
+		</div>
+		<div class="float-left">	
+			<button type="submit" (click)="delete();" class="btn btn-danger">Excluir</button>
+		</div>
 	</form>
 </div>

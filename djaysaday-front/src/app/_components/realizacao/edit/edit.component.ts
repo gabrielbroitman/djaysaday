@@ -2,7 +2,7 @@ import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { RealizacaoService, AtividadeService } from '../../../_services/index';
 import { Realizacao, Atividade } from '../../../_models/index';
 import { ActivatedRoute, Router } from '@angular/router';
-import { DatePipe } from '@angular/common';
+import { DatePipe, Location } from '@angular/common';
 
 @Component({
 	selector: 'app-edit-realizacao',
@@ -17,6 +17,7 @@ export class EditRealizacaoComponent implements OnInit {
 	idRealizacao: number;
 
 	constructor(
+		private _location: Location,
 		public realizacaoService: RealizacaoService,
 		public route: ActivatedRoute,
 		public atividadeService: AtividadeService,
@@ -64,5 +65,9 @@ export class EditRealizacaoComponent implements OnInit {
 		}, error => {
 			console.error(error);
 		});
+	}
+
+	voltar() {
+		this._location.back();
 	}
 }

@@ -1,20 +1,18 @@
-<div class="container">
-  <table class="table table-hover">
-    <thead>
-      <tr>
-        <th id="col-id" scope="col">Atividades cadastradas</th>
-        <th id="col-id" scope="col">Descricao</th>
-        <th id="col-id" scope="col">Tipo de atividade</th>
-        <th id="col-id" scope="col">Data da criação:</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr [routerLink]="['/atividade', atividade.id]" *ngFor="let atividade of atividades">
-        <td>{{ atividade.nome }}</td>
-        <td>{{ atividade.descricao }}</td>
-        <td>{{ atividade.tipoAtividade }}</td>
-        <td>{{ atividade.data_criacao }}</td>
-      </tr>
-    </tbody>
-  </table>
-</div>
+<table class="table table-hover table-borderless table-striped">
+  <thead >
+    <tr class="table-secondary">
+      <th id="col-id" scope="col">Atividades</th>
+      <th id="col-id" scope="col">Descrição</th>
+      <th id="col-id" scope="col">Tipo</th>
+      <th id="col-id" scope="col">Criado em</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr [routerLink]="['/atividade', atividade.id]" *ngFor="let atividade of atividades">
+      <td>{{ atividade.nome }}</td>
+      <td>{{ atividade.descricao }}</td>
+      <td>{{ atividade.tipoAtividade.codigo }}</td>
+      <td>{{ atividade.data_criacao | date:'shortDate' }}</td>
+    </tr>
+  </tbody>
+</table>

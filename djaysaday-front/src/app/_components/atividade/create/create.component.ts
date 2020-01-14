@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Atividade } from '../../../_models/index';
+import { Atividade, TIPOS_ATIVIDADE } from '../../../_models/index';
+import { Location } from '@angular/common';
 import { AtividadeService } from '../../../_services/atividade.service';
 
 @Component({
@@ -12,8 +13,10 @@ export class CreateAtividadeComponent implements OnInit {
 	unique_column: number;
 	keyword: string;
 	atividade = {};
+	tiposAtividade = TIPOS_ATIVIDADE;
 
-	constructor(public atividadeService: AtividadeService, public router: Router) { }
+
+	constructor(public atividadeService: AtividadeService, public router: Router, private _location: Location) { }
 
 	ngOnInit() {
 		this.create();
@@ -32,5 +35,9 @@ export class CreateAtividadeComponent implements OnInit {
 		}, error => {
 			console.error(error);
 		});
+	}
+
+	voltar() {
+		this._location.back();
 	}
 }

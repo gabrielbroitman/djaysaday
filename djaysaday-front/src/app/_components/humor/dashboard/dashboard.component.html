@@ -1,16 +1,17 @@
 <div class="container">
-  <div class="row">
-    <span class="col-auto">
-      <button [routerLink]="['/humor/create']" class="btn btn-primary">Criar humor</button>
-    </span>
-    <span class="col-auto">
-      <button [routerLink]="['/humor/listar']" class="btn btn-primary">Listar humores</button>
-    </span>
+  <div class="row float-right">
+    <div class="col-auto">
+      <i [routerLink]="['/humor/listar']" class="fa fa-list" aria-hidden="true"></i>
+    </div>
+    <div class="col-auto">
+      <i [routerLink]="['/humor/create']" class="fa fa-plus-square" aria-hidden="true"></i>
+    </div>
   </div>
+
   <br>
   <div class="row">
     <span class="col-auto">
-      <h1>Sensações mais sentidas por você:</h1>
+      <h4><b>Seu humor, hoje</b></h4>
     </span>
   </div>
   <br>

@@ -1,4 +1,5 @@
 <div *ngIf="atividade" class="container">
+	<i class="fa fa-arrow-circle-o-left float-right" (click)="voltar()" aria-hidden="true"></i>
 	<form>
 		<div class="form-row">
 			<div class="form-group col-md-6">
@@ -8,8 +9,13 @@
 			</div>
 			<div class="form-group col-md-6">
 				<label for="tipoAtividade">Tipo de atividade</label>
-				<input [(ngModel)]="atividade.tipoAtividade" type="text" class="form-control" id="column_2"
-					name="column_2" placeholder="Value 2">
+
+				<select id="column_2" class="form-control" [(ngModel)]="atividade.tipoAtividade" name="column_2">
+					<option [ngValue]="undefined">Todos</option>
+					<option *ngFor="let tipoAtividade of tiposAtividade" [ngValue]="tipoAtividade.codigo">
+						{{ tipoAtividade.nome }}</option>
+				</select>
+
 			</div>
 			<div class="form-group col-md-6">
 				<label for="descricao">Descrição</label>
@@ -17,9 +23,11 @@
 					name="column_3" placeholder="Value 3"></textarea>
 			</div>
 		</div>
-		<div class="">
-			<button type="submit" (click)="update();" class="btn btn-primary">Store</button>
-			<button type="submit" (click)="delete();" class="btn btn-primary">Delete</button>
+		<div class="float-right">
+			<button type="submit" (click)="update();" class="btn btn-success ">Salvar</button>
+		</div>
+		<div class="float-left">	
+			<button type="submit" (click)="delete();" class="btn btn-danger">Excluir</button>
 		</div>
 	</form>
 </div>

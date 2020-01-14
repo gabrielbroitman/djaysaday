@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, OnChanges } from '@angular/core';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
+import { Location } from '@angular/common';
 import { AtividadeService } from '../../../_services/index';
 import { Atividade, Paginate } from '../../../_models/index';
 
@@ -14,7 +15,7 @@ export class ListaAtividadeComponent implements OnInit, OnChanges {
 
 	atividades: Atividade[];
 
-	constructor(public atividadeService: AtividadeService, public route: ActivatedRoute, public router: Router) {
+	constructor(public atividadeService: AtividadeService, public route: ActivatedRoute, public router: Router, private _location: Location) {
 
 	}
 
@@ -75,5 +76,9 @@ export class ListaAtividadeComponent implements OnInit, OnChanges {
 			result.push(i);
 		}
 		return result;
+	}
+
+	voltar() {
+		this._location.back();
 	}
 }

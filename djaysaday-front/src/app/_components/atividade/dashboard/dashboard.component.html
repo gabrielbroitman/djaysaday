@@ -1,20 +1,21 @@
 <div class="container">
-  <div class="row">
-    <span class="col-auto">
-      <button [routerLink]="['/atividade/create']" class="btn btn-primary">Criar atividade</button>
-    </span>
-    <span class="col-auto">
-      <button [routerLink]="['/atividade/listar']" class="btn btn-primary">Listar atividades</button>
-    </span>
+  <div class="row float-right">
+    <div class="col-auto">
+      <i [routerLink]="['/atividade/listar']" class="fa fa-list" aria-hidden="true"></i>
+    </div>
+    <div class="col-auto">
+      <i [routerLink]="['/atividade/create']" class="fa fa-plus-square" aria-hidden="true"></i>
+    </div>
   </div>
+  <br>
   <br>
   <div class="row">
     <span class="col-auto">
-      <h1>Atividades mais realizadas por você:</h1>
+      <h4><b>Atividades mais realizadas por você:</b></h4>
     </span>
   </div>
   <br>
-  <div class="row">
-    <app-lista-atividade [rank]="true"></app-lista-atividade>
-  </div>
+
+
 </div>
+<app-lista-atividade [rank]="true"></app-lista-atividade>
